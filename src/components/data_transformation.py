@@ -25,8 +25,8 @@ class DataTransformation:
 
     def get_data_transformer_object(self):
         try:
-            numrical_features = ['writing_score', 'reading_score']
-            categorical_features = [
+            numrical_columns = ['writing_score', 'reading_score']
+            categorical_columns = [
                 'gender',
                 'race_ethnicity',
                 'parental_level_of_education',
@@ -46,12 +46,12 @@ class DataTransformation:
                 ('scaler', StandardScaler(with_mean=False))
             ])
 
-            logging.info(f'Categorical Columns: {categorical_features}')
-            logging.info(f'Numrical Columns: {numrical_features}')
+            logging.info(f'Categorical Columns: {categorical_columns}')
+            logging.info(f'Numrical Columns: {numrical_columns}')
 
             preporcessor = ColumnTransformer([
-                ('num_pipeline', num_pipeline, numrical_features)
-                ('cat_pipeline', cat_pipeline, categorical_features)
+                ('num_pipeline', num_pipeline, numrical_columns)
+                ('cat_pipeline', cat_pipeline, categorical_columns)
             ])
 
             return preporcessor
