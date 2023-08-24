@@ -35,7 +35,7 @@ class DataTransformation:
             ]
 
             num_pipeline = Pipeline(steps=[
-                ('imputer', SimpleImputer(strategy=median)),
+                ('imputer', SimpleImputer(strategy='median')),
                 ('scaler', StandardScaler())
 
             ])
@@ -50,7 +50,7 @@ class DataTransformation:
             logging.info(f'Numrical Columns: {numrical_columns}')
 
             preporcessor = ColumnTransformer([
-                ('num_pipeline', num_pipeline, numrical_columns)
+                ('num_pipeline', num_pipeline, numrical_columns),
                 ('cat_pipeline', cat_pipeline, categorical_columns)
             ])
 
@@ -98,7 +98,7 @@ class DataTransformation:
             return (
                 train_arr,
                 test_arr,
-                self.data_transformation_config.preprocessor_obj_file_path,
+                # self.data_transformation_config.preprocessor_obj_file_path,
             )
 
         except Exception as e:
